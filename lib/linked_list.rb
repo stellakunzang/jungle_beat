@@ -47,6 +47,11 @@ class LinkedList
   end
 
   def insert(index, beat)
-
+    next_node = list[index]
+    node = Node.new(beat, next_node)
+    if index != 0
+      before_node = list[(index - 1)]
+      before_node.next = node
+    end 
   end
 end
