@@ -39,4 +39,14 @@ class LinkedList
       node.data.to_s
     end.join(" ")
   end
+
+  def prepend(beat)
+    node = Node.new(beat)
+    node.next = @head
+    @head = node
+  end
+
+  def insert(index, beat)
+
+  end
 end
