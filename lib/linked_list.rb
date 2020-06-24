@@ -16,26 +16,26 @@ class LinkedList
       while node.next != nil
         node = node.next
       end
-      @head.next = Node.new(beat)
+      node.next = Node.new(beat)
     end
   end
 
-  def list
-    list = []
+  def links
+    links = []
     node = @head
     while node.next != nil
-      list << node
+      links << node
       node = node.next
     end
-    list << node
+    links << node
   end
 
   def count
-    list.length
+    links.length
   end
 
   def to_string
-    list.map do |node|
+    links.map do |node|
       node.data.to_s
     end.join(" ")
   end
@@ -47,11 +47,32 @@ class LinkedList
   end
 
   def insert(index, beat)
-    next_node = list[index]
+    next_node = links[index]
     node = Node.new(beat, next_node)
     if index != 0
-      before_node = list[(index - 1)]
+      before_node = links[(index - 1)]
       before_node.next = node
-    end 
+    end
+  end
+
+  def find(index, length)
+    found = [links[index].data]
+    new_index = index + 1
+    while new_index != index + length
+      found << links[new_index].data
+      new_index += 1
+    end
+    found.join(" ")
+  end
+
+  def pop
+    pop_node = links[-1]
+    last_node = links[-2]
+    last_node.next = nil
+    pop_node.data
+  end
+
+  def includes?(beat)
+    self.to_string.include?(beat)
   end
 end
