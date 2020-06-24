@@ -1,0 +1,5 @@
+require_relative "./node.rb"
+require_relative "./linked_list.rb"
+
+class JungleBeatList
+end 
